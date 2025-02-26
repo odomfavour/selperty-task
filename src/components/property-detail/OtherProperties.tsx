@@ -1,4 +1,3 @@
-import React from 'react';
 import PropertyCard from '../listings/PropertyCard';
 
 const OtherProperties = () => {
