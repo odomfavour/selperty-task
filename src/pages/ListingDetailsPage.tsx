@@ -57,8 +57,10 @@ const ListingDetailsPage = () => {
             <span>Back</span>
           </Link>
           <div className="flex items-center gap-2 mb-6 text-sm font-normal">
-            <p>Listings</p>
-            <p>/</p>
+            <Link to="/" className="opacity-40">
+              Listings
+            </Link>
+            <p className="opacity-40">/</p>
             <p>Property Details</p>
           </div>
           <div className="flex md:flex-row flex-col gap-4">
