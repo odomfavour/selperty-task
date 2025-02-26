@@ -25,6 +25,26 @@ const ListingsPage = () => {
       size: '450sqm',
       image: '/images/cover.png',
     },
+    {
+      id: 3,
+      title: '3 Bedroom Penthouse',
+      location: 'Kings Court Lekki Phase 3',
+      price: '₦350,000,000',
+      beds: 3,
+      baths: 4,
+      size: '450sqm',
+      image: '/images/cover.png',
+    },
+    {
+      id: 4,
+      title: '3 Bedroom Penthouse',
+      location: 'Kings Court Lekki Phase 3',
+      price: '₦350,000,000',
+      beds: 3,
+      baths: 4,
+      size: '450sqm',
+      image: '/images/cover.png',
+    },
     // Add more properties
   ];
 
