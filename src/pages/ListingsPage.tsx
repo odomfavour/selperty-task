@@ -7,7 +7,6 @@ import { Property } from '@/types/property';
 
 const ListingsPage = () => {
   const { data, isLoading, error } = useProperty();
-  console.log(data);
 
   if (isLoading) return <Loader />;
   if (error) return <p>Error fetching products</p>;
