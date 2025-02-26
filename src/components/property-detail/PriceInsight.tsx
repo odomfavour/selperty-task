@@ -1,13 +1,14 @@
 import { PiArrowUpDuotone } from 'react-icons/pi';
 import Chart from 'react-apexcharts';
 import { RxChevronRight } from 'react-icons/rx';
+import { ApexOptions } from 'apexcharts';
 
 const PriceInsight = () => {
-  const chartOptions = {
+  const chartOptions: ApexOptions = {
     chart: {
       type: 'area',
       toolbar: { show: false },
-      sparkline: { enabled: true }, // Removes axis lines for a minimal look
+      sparkline: { enabled: true },
     },
     colors: ['#22c55e'],
     stroke: { curve: 'smooth', width: 2 },
