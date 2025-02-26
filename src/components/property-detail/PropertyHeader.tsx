@@ -1,4 +1,3 @@
-import { FaCheckCircle } from 'react-icons/fa';
 import { DoubleBed, BathTub, FloorPlan, PaymentSuccess } from '@/utils/icons';
 import { FaLocationPin } from 'react-icons/fa6';
 
