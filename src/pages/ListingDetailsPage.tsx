@@ -1,3 +1,4 @@
+import Loader from '@/components/general/Loader';
 import ActionButtons from '@/components/property-detail/ActionButtons';
 import DevelopmentUpdate from '@/components/property-detail/DevelopmentUpdate';
 import OtherProperties from '@/components/property-detail/OtherProperties';
@@ -5,10 +6,45 @@ import PriceInsight from '@/components/property-detail/PriceInsight';
 import PropertyFeatures from '@/components/property-detail/PropertyFeatures';
 import PropertyHeader from '@/components/property-detail/PropertyHeader';
 import PropertyMap from '@/components/property-detail/PropertyMap';
+import { useProperty, usePropertyById } from '@/hooks/useProperty';
+import { Property } from '@/types/property';
+import { useEffect } from 'react';
 import { FaLongArrowAltLeft } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const ListingDetailsPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const { propertyId } = useParams<{ propertyId: string }>();
+
+  const {
+    data: propertyData,
+    isLoading: propertyLoading,
+    error: propertyError,
+  } = usePropertyById(propertyId || '');
+  const {
+    data: listingsData,
+    isLoading: listingsLoading,
+    error: listingsError,
+  } = useProperty();
+
+  if (propertyLoading || listingsLoading) {
+    return <Loader />;
+  }
+
+  if (propertyError) {
+    return <p>Error fetching property details: {propertyError.message}</p>;
+  }
+
+  if (listingsError) {
+    return <p>Error fetching listings: {listingsError.message}</p>;
+  }
+  const filteredListings = listingsData?.realEstateProducts?.filter(
+    (listing: Property) => listing.id !== propertyId
+  );
+
   return (
     <div className="bg-white">
       <div className="w-11/12 mx-auto">
@@ -27,8 +63,10 @@ const ListingDetailsPage = () => {
           </div>
           <div className="flex md:flex-row flex-col gap-4">
             <div className="md:w-3/4 w-full">
-              <PropertyHeader />
-              <PropertyMap />
+              <PropertyHeader
+                propertyDetail={propertyData?.realEstateProduct}
+              />
+              <PropertyMap propertyDetail={propertyData?.realEstateProduct} />
               <PropertyFeatures />
             </div>
             <div className="md:w-1/4 w-full">
@@ -37,7 +75,7 @@ const ListingDetailsPage = () => {
               <ActionButtons />
             </div>
           </div>
-          <OtherProperties />
+          <OtherProperties properties={filteredListings} />
         </div>
       </div>
     </div>

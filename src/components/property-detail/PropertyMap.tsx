@@ -1,4 +1,10 @@
-const PropertyMap = () => {
+import { Property } from '@/types/property';
+
+interface PropertyMapProps {
+  propertyDetail: Property;
+}
+
+const PropertyMap = ({ propertyDetail }: PropertyMapProps) => {
   return (
     <div className="mt-6 mb-8">
       <h3 className="text-[20px] font-semibold mb-2">Map</h3>
@@ -17,19 +23,7 @@ const PropertyMap = () => {
 
       <h3 className="text-[20px] font-semibold mb-2 mt-6">Description</h3>
       <p className="font-normal text-sm">
-        Potter ipsum wand elf parchment wingardium. Suck shack 10 wheels
-        ministry-of-magic sound phoenix match. Werewolf thirsty thieves eyes
-        glass beasts wars. Padma pig’s voldemort prefect’s orbs cutting follow.
-        Nose armchairs 9¾ trace red quills 12. The downfall expecto
-        half-moon-glasses fanged nose where pear-tickle gargoyles. Vulture-hat
-        inferi together weekly eeylops kedavra trevor fanged again scabbers.
-        Glory hippogriffs them polyjuice fawkes snitch. Hippogriffs daisies love
-        chance wizard cakes. Splinched for knut 9¾ thirsty mr cup. Come creature
-        crookshanks where your. Armchairs hippogriffs pumpkin phoenix duel blood
-        banquet bee full. Emporium years ministry-of-magic dementors bee wand of
-        snitch parchment. Sunshine portkey eye daily muggle-born cloak hiya
-        stand portkey. Second tweak duel trunks beaters bright creature
-        invisibility. Spider pie hagrid feather hat fantastic.
+        {propertyDetail?.asset?.description}
       </p>
     </div>
   );

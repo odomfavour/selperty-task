@@ -31,16 +31,18 @@ const Pagination = ({
         </span>
 
         {/* Page Numbers (Hidden on Mobile) */}
-        <div className="hidden md:flex items-center space-x-2">
-          <span className="px-2 text-[#D9D9D9]">...</span>
-          <span className="h-8 w-8 flex items-center justify-center border rounded bg-white text-sm">
-            8
-          </span>
-          <span className="px-2 text-[#D9D9D9]">...</span>
-          <span className="h-8 w-8 flex items-center justify-center border rounded border-[#D9D9D9] bg-white text-sm">
-            {totalPages}
-          </span>
-        </div>
+        {totalPages > 10 && (
+          <div className="hidden md:flex items-center space-x-2">
+            <span className="px-2 text-[#D9D9D9]">...</span>
+            <span className="h-8 w-8 flex items-center justify-center border rounded bg-white text-sm">
+              8
+            </span>
+            <span className="px-2 text-[#D9D9D9]">...</span>
+            <span className="h-8 w-8 flex items-center justify-center border rounded border-[#D9D9D9] bg-white text-sm">
+              {totalPages}
+            </span>
+          </div>
+        )}
 
         {/* Next Button */}
         <button

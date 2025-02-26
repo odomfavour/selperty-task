@@ -8,7 +8,7 @@ const PublicRoutes = [
     element: <PublicLayout />,
     children: [
       { index: true, element: <ListingsPage /> },
-      { path: 'listings/:listingId', element: <ListingDetailsPage /> },
+      { path: 'listings/:propertyId', element: <ListingDetailsPage /> },
     ],
   },
 ];

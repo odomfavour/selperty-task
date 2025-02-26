@@ -1,56 +1,16 @@
+import Loader from '@/components/general/Loader';
 import Filters from '@/components/listings/Filters';
 import Pagination from '@/components/listings/Pagination';
 import PropertyCard from '@/components/listings/PropertyCard';
-import { useState } from 'react';
+import { useProperty } from '@/hooks/useProperty';
+import { Property } from '@/types/property';
 
 const ListingsPage = () => {
-  const properties = [
-    {
-      id: 1,
-      title: 'Isimi Lagos land for sale',
-      location: 'Kings Court Lekki Phase 3',
-      price: '₦400,000,000',
-      beds: 6,
-      baths: 8,
-      size: '700sqm',
-      image: '/images/cover.png',
-    },
-    {
-      id: 2,
-      title: '3 Bedroom Penthouse',
-      location: 'Kings Court Lekki Phase 3',
-      price: '₦350,000,000',
-      beds: 3,
-      baths: 4,
-      size: '450sqm',
-      image: '/images/cover.png',
-    },
-    {
-      id: 3,
-      title: '3 Bedroom Penthouse',
-      location: 'Kings Court Lekki Phase 3',
-      price: '₦350,000,000',
-      beds: 3,
-      baths: 4,
-      size: '450sqm',
-      image: '/images/cover.png',
-    },
-    {
-      id: 4,
-      title: '3 Bedroom Penthouse',
-      location: 'Kings Court Lekki Phase 3',
-      price: '₦350,000,000',
-      beds: 3,
-      baths: 4,
-      size: '450sqm',
-      image: '/images/cover.png',
-    },
-    // Add more properties
-  ];
+  const { data, isLoading, error } = useProperty();
+  console.log(data);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalItems = 85;
-  const totalPages = 50;
+  if (isLoading) return <Loader />;
+  if (error) return <p>Error fetching products</p>;
   return (
     <div>
       <div className="w-11/12 mx-auto">
@@ -58,15 +18,15 @@ const ListingsPage = () => {
           <h1 className="text-2xl font-bold mb-6">Listings</h1>
           <Filters />
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6">
-            {properties.map((property) => (
+            {data?.realEstateProducts?.map((property: Property) => (
               <PropertyCard key={property.id} property={property} />
             ))}
           </div>
           <Pagination
-            totalItems={totalItems}
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={setCurrentPage}
+            totalItems={data?.meta.total}
+            currentPage={data?.meta.currentPage}
+            totalPages={data?.meta.numberOfPages}
+            onPageChange={(page) => console.log('Go to page:', page)}
           />
         </div>
       </div>

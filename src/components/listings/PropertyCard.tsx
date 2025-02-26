@@ -10,28 +10,34 @@ const PropertyCard = ({ property }: PropertyCardProps) => {
   return (
     <div className="bg-white border-[#F0F0F0] border rounded-lg overflow-hidden relative">
       <img
-        src={property.image}
-        alt={property.title}
+        src={property?.mediaUrls?.[0].url || '/images/cover.png'}
+        alt={property?.asset?.name || 'cover'}
         className="w-full h-48 object-cover"
       />
       <div className="py-5 px-[23px]">
         <div className="flex gap-1 items-center mb-2">
           <FaLocationPin className="text-sm" />
-          <p className="text-gray-500 text-sm">{property.location}</p>
+          <p className="text-gray-500 text-sm">
+            {property?.asset?.location.city || 'Ikoyi'},{' '}
+            {property?.asset?.location?.state || 'Lagos'}
+          </p>
         </div>
-        <h2 className="text-lg font-normal">{property.title}</h2>
+        <h2 className="text-lg font-normal capitalize">
+          {property?.asset?.name || 'Banana Island'}
+        </h2>
         <div className="flex gap-[10px] text-gray-600 mt-2">
           <span className="border-[#D9D9D9] border py-1 px-2 rounded-lg flex items-center gap-1">
-            <DoubleBed /> {property.beds}
+            <DoubleBed /> 3
           </span>
           <span className="border-[#D9D9D9] border py-1 px-2 rounded-lg flex items-center gap-1">
-            <BathTub /> {property.baths}
+            <BathTub /> 4
           </span>
           <span className="border-[#D9D9D9] border py-1 px-2 rounded-lg flex items-center gap-1">
-            <FloorPlan /> {property.size}
+            <FloorPlan /> {property?.asset?.totalSizeValue || 7000}{' '}
+            {property?.asset?.totalSizeUnit || 'sqm'}
           </span>
         </div>
-        <p className="text-[20px] font-semibold mt-2">{property.price}</p>
+        <p className="text-[20px] font-semibold mt-2">₦400,000,000</p>
         <Link
           to={`/listings/${property.id}`}
           className="mt-4 w-full plain-btn py-1 rounded"
