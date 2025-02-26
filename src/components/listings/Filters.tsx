@@ -4,7 +4,6 @@ const Filters = () => {
   return (
     <div className="flex flex-col md:flex-row md:items-center items-start justify-between gap-4 py-4 bg-gray-100 rounded-lg">
       <div className="flex flex-col md:flex-row md:items-center flex-wrap gap-3 w-full">
-        {/* Search Input */}
         <div className="relative flex items-center border rounded-lg overflow-hidden w-full md:w-auto">
           <input
             type="text"
@@ -16,7 +15,6 @@ const Filters = () => {
           </button>
         </div>
 
-        {/* Filter Dropdowns */}
         <div className="grid grid-cols-2 md:flex md:flex-row gap-3 w-full md:w-auto">
           <select className="border p-2 px-4 rounded-lg bg-white w-full md:w-auto">
             <option>Property Type</option>
@@ -40,7 +38,6 @@ const Filters = () => {
         </div>
       </div>
 
-      {/* Sort Dropdown */}
       <div className="w-full md:w-auto">
         <select className="border p-2 px-4 rounded-lg bg-white font-medium w-full md:w-auto">
           <option>Sort by: Newest</option>

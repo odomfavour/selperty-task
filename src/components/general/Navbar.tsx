@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FiMenu, FiX } from 'react-icons/fi'; // Import icons for the menu
+import { FiMenu, FiX } from 'react-icons/fi';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,14 +28,12 @@ const Navbar = () => {
     >
       <div className="w-11/12 mx-auto">
         <div className="flex items-center justify-between">
-          {/* Navigation Links aligned to the left */}
           <div className="flex items-center gap-4">
             <Link to="/" className="text-xl font-bold text-gray-900">
               <img src="/images/logo.svg" alt="company-logo" />
             </Link>
           </div>
 
-          {/* Desktop Buttons */}
           <div className="hidden md:flex items-center gap-2">
             <Link to="#" className="pri-btn">
               Signup
@@ -45,7 +43,6 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             className="md:hidden text-2xl text-gray-900"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -54,7 +51,6 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden flex flex-col bg-white shadow-md mt-4 py-4 absolute w-full left-0 px-5">
             <Link
